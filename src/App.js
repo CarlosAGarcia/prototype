@@ -30,6 +30,10 @@ class FillForm extends Component {
     item3: ["Firstname", "Lastname", "", "hello"],
     items: [
       ["Firstname ", "Lastname ", "", "hello "],
+      ["Firstname ", "Lastname ", "", "hello "],
+      ["Firstname ", "Lastname ", "", "hello "],
+      ["Firstname ", "Lastname ", "", "hello "],
+      ["Firstname ", "Lastname ", "", "hello "],
       ["Firstname1 ", "Lastname1 ", "", "hello1 "]
     ]
   };
@@ -50,7 +54,15 @@ class FillForm extends Component {
     console.log(items.length);
     let cols = [];
     for (var i = 0; i < items.length; i++) {
-      cols.push(<td key={i}>{items[i]}</td>);
+      cols.push(
+        <td
+          key={i}
+          className="text-center "
+          contentEditable={items[i] === "" ? true : false}
+        >
+          {items[i]}
+        </td>
+      );
     }
 
     return cols;
@@ -70,21 +82,13 @@ class FillForm extends Component {
               ))}
             </tr>
           </thead>
-          <tbody>
-            {this.state.items.map(item => {
-              console.log("FIRST MAP recieved" + item);
-              {
-                this.populateTable1(item);
-              }
-            })}
-
-            {this.createTRs(this.state.items)}
-          </tbody>
+          <tbody>{this.createTRs(this.state.items)}</tbody>
         </table>
       </div>
     );
   }
 }
+
 class App extends Component {
   render() {
     return (
